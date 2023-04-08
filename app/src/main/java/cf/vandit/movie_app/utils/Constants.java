@@ -1,9 +1,9 @@
 package cf.vandit.movie_app.utils;
 
 public class Constants {
-    public static final String API_KEY = "e904cd25f93143f938021b6f300ca5f6";
+    public static final String API_KEY = "27e3c7b518c8e230a54cad97321c9364";
     public static final String YOUTUBE_API_KEY = "AIzaSyDvIMRSVE0nl4pCDCj-JdBkuY8kG86AEqA";
-    public static final String BASE_URL = "https://api.themoviedb.org/3/";
+    public static final String BASE_URL = "https://api.themoviedb.org/3/movie/550?api_key=27e3c7b518c8e230a54cad97321c9364";
     public static final String MOVIE_STREAM_URL = "https://gomo.to/movie/";
     public static final String SERIES_STREAM_URL = "https://gomo.to/show/";
     public static final String IMAGE_LOADING_BASE_URL_1280 = "https://image.tmdb.org/t/p/w1280/";

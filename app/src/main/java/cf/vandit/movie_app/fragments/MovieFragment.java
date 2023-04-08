@@ -69,21 +69,20 @@ public class MovieFragment extends Fragment {
     private List<MovieBrief> mAdventureMovies;
     private List<MovieBrief> mAnimatedMovies;
     private List<MovieBrief> mComedyMovies;
-    private List<MovieBrief> mCrimeMovies;
-    private List<MovieBrief> mDocumentaryMovies;
+
+
     private List<MovieBrief> mDramaMovies;
-    private List<MovieBrief> mFamilyMovies;
+
     private List<MovieBrief> mFantasyMovies;
-    private List<MovieBrief> mHistoryMovies;
+
     private List<MovieBrief> mHorrorMovies;
-    private List<MovieBrief> mMusicMovies;
-    private List<MovieBrief> mMysteryMovies;
-    private List<MovieBrief> mRomanceMovies;
+
+
     private List<MovieBrief> mSciFiMovies;
     private List<MovieBrief> mTvMovies;
-    private List<MovieBrief> mThrillerMovies;
-    private List<MovieBrief> mWarMovies;
-    private List<MovieBrief> mWesternMovies;
+
+
+
 
 
     private RecyclerView mNestedRecView;
@@ -118,46 +117,31 @@ public class MovieFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mProgressBar = view.findViewById(R.id.movie_progressBar);
-
         mViewPopular = view.findViewById(R.id.view_popular);
         mViewTopRated = view.findViewById(R.id.view_top_rated);
-
         mNowShowingRecyclerView = view.findViewById(R.id.carousel_recView);
-
         mPopularMoviesRecyclerView = view.findViewById(R.id.popular_recView);
         mTopRatedRecyclerView = view.findViewById(R.id.top_rated_recView);
-
         mPopularHeading = view.findViewById(R.id.popular_heading);
         mTopRatedHeading = view.findViewById(R.id.top_rated_heading);
-
         mNestedRecView = view.findViewById(R.id.movie_nested_recView);
+
 
         mNowShowingMovies = new ArrayList<>();
         mPopularMovies = new ArrayList<>();
         mTopRatedMovies = new ArrayList<>();
-
         mActionMovies = new ArrayList<>();
         mAnimatedMovies = new ArrayList<>();
         mAdventureMovies = new ArrayList<>();
         mComedyMovies = new ArrayList<>();
-        mCrimeMovies = new ArrayList<>();
-        mDocumentaryMovies = new ArrayList<>();
         mDramaMovies = new ArrayList<>();
-        mFamilyMovies = new ArrayList<>();
         mFantasyMovies = new ArrayList<>();
-        mHistoryMovies = new ArrayList<>();
         mHorrorMovies = new ArrayList<>();
-        mMusicMovies = new ArrayList<>();
-        mMysteryMovies = new ArrayList<>();
-        mRomanceMovies = new ArrayList<>();
         mSciFiMovies = new ArrayList<>();
         mTvMovies = new ArrayList<>();
-        mThrillerMovies = new ArrayList<>();
-        mWarMovies = new ArrayList<>();
-        mWesternMovies = new ArrayList<>();
+
 
         mNestedList = new ArrayList<>();
-
         mNowShowingMoviesLoaded = false;
         mPopularMoviesLoaded = false;
         mTopRatedMoviesLoaded = false;
@@ -260,21 +244,17 @@ public class MovieFragment extends Fragment {
         loadAdventureMovies();
         loadAnimatedMovies();
         loadComedyMovies();
-        loadCrimeMovies();
-        loadDocumentaryMovies();
+
         loadDramaMovies();
-        loadFamilyMovies();
         loadFantasyMovies();
-        loadHistoryMovies();
+
         loadHorrorMovies();
-        loadMusicMovies();
-        loadMysteryMovies();
-        loadRomanceMovies();
+
         loadSciFiMovies();
         loadTvMovies();
-        loadThriller();
-        loadWarMovies();
-        loadWesternMovies();
+
+
+
     }
 
     private void loadNowShowingMovies() {
@@ -479,62 +459,9 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void loadCrimeMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.CRIME_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
 
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
 
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mCrimeMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mCrimeMovies, Constants.CRIME_MOVIES_TYPE));
-            }
 
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
-
-    private void loadDocumentaryMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.DOCUMENTARY_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
-
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mDocumentaryMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mDocumentaryMovies, Constants.DOCUMENTARY_MOVIES_TYPE));
-                mMoviesNestedRecViewAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
     private void loadDramaMovies(){
         ApiInterface apiInterface = ApiClient.getMovieApi();
@@ -564,33 +491,7 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void loadFamilyMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.FAMILY_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
 
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mFamilyMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mFamilyMovies, Constants.FAMILY_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
     private void loadFantasyMovies(){
         ApiInterface apiInterface = ApiClient.getMovieApi();
@@ -620,33 +521,7 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void loadHistoryMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.HISTORY_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
 
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mHistoryMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mHistoryMovies, Constants.HISTORY_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
     private void loadHorrorMovies(){
         ApiInterface apiInterface = ApiClient.getMovieApi();
@@ -676,89 +551,10 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void loadMusicMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.MUSIC_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
 
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
 
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mMusicMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mMusicMovies, Constants.MUSIC_MOVIES_TYPE));
-            }
 
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
-    private void loadMysteryMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.MYSTERY_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
-
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mMysteryMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mMysteryMovies, Constants.MYSTERY_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
-
-    private void loadRomanceMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.ROMANCE_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
-
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mRomanceMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mRomanceMovies, Constants.ROMANCE_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
     private void loadSciFiMovies(){
         ApiInterface apiInterface = ApiClient.getMovieApi();
@@ -816,90 +612,7 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void loadThriller(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.THRILLER_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
 
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mThrillerMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mThrillerMovies, Constants.THRILLER_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
-
-    private void loadWarMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.WAR_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
-
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mWarMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mWarMovies, Constants.WAR_MOVIES_TYPE));
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
-
-    private void loadWesternMovies(){
-        ApiInterface apiInterface = ApiClient.getMovieApi();
-        mGenreMoviesResponseCall = apiInterface.getMoviesByGenre(Constants.API_KEY, Constants.WESTERN_MOVIES_TYPE, 1);
-        mGenreMoviesResponseCall.enqueue(new Callback<GenreMoviesResponse>() {
-            @Override
-            public void onResponse(Call<GenreMoviesResponse> call, Response<GenreMoviesResponse> response) {
-                if (!response.isSuccessful()){
-                    mGenreMoviesResponseCall = call.clone();
-                    mGenreMoviesResponseCall.enqueue(this);
-                    return;
-                }
-
-                if (response.body() == null) return;
-                if (response.body().getResults() == null) return;
-
-                for (MovieBrief movieBrief : response.body().getResults()){
-                    if(movieBrief != null && movieBrief.getPosterPath() != null){
-                        mWesternMovies.add(movieBrief);
-                    }
-                }
-                mNestedList.add(new NestedRecViewModel(mWesternMovies, Constants.WESTERN_MOVIES_TYPE));
-                mMoviesNestedRecViewAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<GenreMoviesResponse> call, Throwable t) {}
-        });
-    }
 
     private void checkAllDataLoaded(){
         if(mNowShowingMoviesLoaded && mPopularMoviesLoaded && mTopRatedMoviesLoaded) {
