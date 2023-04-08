@@ -77,17 +77,8 @@ public class ViewAllMoviesActivity extends AppCompatActivity {
             case Constants.COMEDY_MOVIES_TYPE:
                 setTitle("Comedy Movies");
                 break;
-            case Constants.CRIME_MOVIES_TYPE:
-                setTitle("Crime Movies");
-                break;
-            case Constants.DOCUMENTARY_MOVIES_TYPE:
-                setTitle("Documentary Movies");
-                break;
             case Constants.DRAMA_MOVIES_TYPE:
                 setTitle("Drama Movies");
-                break;
-            case Constants.FAMILY_MOVIES_TYPE:
-                setTitle("Family Movies");
                 break;
             case Constants.FANTASY_MOVIES_TYPE:
                 setTitle("Fantasy Movies");
@@ -98,30 +89,14 @@ public class ViewAllMoviesActivity extends AppCompatActivity {
             case Constants.HORROR_MOVIES_TYPE:
                 setTitle("Horror Movies");
                 break;
-            case Constants.MUSIC_MOVIES_TYPE:
-                setTitle("Music Movies");
-                break;
-            case Constants.MYSTERY_MOVIES_TYPE:
-                setTitle("Mystery Movies");
-                break;
-            case Constants.ROMANCE_MOVIES_TYPE:
-                setTitle("Romance Movies");
-                break;
             case Constants.SCIFI_MOVIES_TYPE:
                 setTitle("Sci-Fi Movies");
                 break;
             case Constants.TV_MOVIES_TYPE:
                 setTitle("TV Movies");
                 break;
-            case Constants.THRILLER_MOVIES_TYPE:
-                setTitle("Thriller Movies");
-                break;
-            case Constants.WAR_MOVIES_TYPE:
-                setTitle("War Movies");
-                break;
-            case Constants.WESTERN_MOVIES_TYPE:
-                setTitle("Western Movies");
-                break;
+
+
         }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.view_movies_recView);

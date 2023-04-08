@@ -23,21 +23,16 @@ public class Constants {
     public static final int ADVENTURE_MOVIES_TYPE = 12;
     public static final int ANIMATION_MOVIES_TYPE = 16;
     public static final int COMEDY_MOVIES_TYPE = 35;
-    public static final int CRIME_MOVIES_TYPE = 80;
-    public static final int DOCUMENTARY_MOVIES_TYPE = 99;
+
     public static final int DRAMA_MOVIES_TYPE = 18;
-    public static final int FAMILY_MOVIES_TYPE = 10751;
+
     public static final int FANTASY_MOVIES_TYPE = 14;
     public static final int HISTORY_MOVIES_TYPE = 36;
     public static final int HORROR_MOVIES_TYPE = 27;
-    public static final int MUSIC_MOVIES_TYPE = 10402;
-    public static final int MYSTERY_MOVIES_TYPE = 9648;
-    public static final int ROMANCE_MOVIES_TYPE = 10749;
+
     public static final int SCIFI_MOVIES_TYPE = 878;
     public static final int TV_MOVIES_TYPE = 10770;
-    public static final int THRILLER_MOVIES_TYPE = 53;
-    public static final int WAR_MOVIES_TYPE = 10752;
-    public static final int WESTERN_MOVIES_TYPE = 37;
+
 
     public static final String VIEW_ALL_TV_SHOWS_TYPE = "type_view_all_tv_shows";
     public static final int ON_THE_AIR_TV_SHOWS_TYPE = 101;

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cf.vandit.movie_app.R;
+import cf.vandit.movie_app.adapters.SearchResultsAdapter;
 import cf.vandit.movie_app.network.search.SearchAsyncTaskLoader;
 import cf.vandit.movie_app.network.search.SearchResponse;
 import cf.vandit.movie_app.network.search.SearchResult;
@@ -28,7 +29,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     private RecyclerView mSearchResultsRecyclerView;
     private List<SearchResult> mSearchResults;
-
+    private SearchResultsAdapter mSearchResultsAdapter;
 
     private ProgressBar progressBar;
     private TextView mEmptyTextView;
@@ -58,6 +59,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         mSearchResultsRecyclerView = findViewById(R.id.recycler_view_search);
         mSearchResults = new ArrayList<>();
+        mSearchResultsAdapter = new SearchResultsAdapter(SearchResultsActivity.this, mSearchResults);
+        mSearchResultsRecyclerView.setAdapter(mSearchResultsAdapter);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchResultsActivity.this, LinearLayoutManager.VERTICAL, false);
         mSearchResultsRecyclerView.setLayoutManager(linearLayoutManager);
 
@@ -106,6 +109,13 @@ public class SearchResultsActivity extends AppCompatActivity {
                     if (searchResult != null)
                         mSearchResults.add(searchResult);
                 }
+                mSearchResultsAdapter.notifyDataSetChanged();
+                if (mSearchResults.isEmpty()) mEmptyTextView.setVisibility(View.VISIBLE);
+                if (searchResponse.getPage() == searchResponse.getTotalPages())
+                    pagesOver = true;
+                else
+                    presentPage++;
+
             }
 
             @Override

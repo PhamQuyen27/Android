@@ -70,35 +70,11 @@ public class MoviesNestedRecViewAdapter extends RecyclerView.Adapter<MoviesNeste
                     mContext.startActivity(intent);
                 });
                 break;
-            case 80:
-                holder.nested_heading.setText("Crime");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.CRIME_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 99:
-                holder.nested_heading.setText("Documentary");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.DOCUMENTARY_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
             case 18:
                 holder.nested_heading.setText("Drama");
                 holder.nested_view_all.setOnClickListener(view -> {
                     Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
                     intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.DRAMA_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 10751:
-                holder.nested_heading.setText("Family");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.FAMILY_MOVIES_TYPE);
                     mContext.startActivity(intent);
                 });
                 break;
@@ -126,30 +102,6 @@ public class MoviesNestedRecViewAdapter extends RecyclerView.Adapter<MoviesNeste
                     mContext.startActivity(intent);
                 });
                 break;
-            case 10402:
-                holder.nested_heading.setText("Music");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.MUSIC_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 9648:
-                holder.nested_heading.setText("Mystery");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.MYSTERY_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 10749:
-                holder.nested_heading.setText("Romance");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.ROMANCE_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
             case 878:
                 holder.nested_heading.setText("Science Fiction");
                 holder.nested_view_all.setOnClickListener(view -> {
@@ -166,30 +118,7 @@ public class MoviesNestedRecViewAdapter extends RecyclerView.Adapter<MoviesNeste
                     mContext.startActivity(intent);
                 });
                 break;
-            case 53:
-                holder.nested_heading.setText("Thriller");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.THRILLER_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 10752:
-                holder.nested_heading.setText("War");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.WAR_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
-            case 37:
-                holder.nested_heading.setText("Western");
-                holder.nested_view_all.setOnClickListener(view -> {
-                    Intent intent = new Intent(mContext, ViewAllMoviesActivity.class);
-                    intent.putExtra(Constants.VIEW_ALL_MOVIES_TYPE, Constants.WESTERN_MOVIES_TYPE);
-                    mContext.startActivity(intent);
-                });
-                break;
+
         }
 
         setMovieRecView(holder.nested_recView, mNestedList.get(position).getmMovies());
