@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 import cf.vandit.movie_app.R;
-import cf.vandit.movie_app.activities.CastActivity;
 import cf.vandit.movie_app.activities.MovieDetailsActivity;
 import cf.vandit.movie_app.activities.SeriesDetailsActivity;
 import cf.vandit.movie_app.network.search.SearchResult;
@@ -118,10 +117,6 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
                     } else if (mSearchResults.get(getAdapterPosition()).getMediaType().equals("tv")) {
                         Intent intent = new Intent(mContext, SeriesDetailsActivity.class);
                         intent.putExtra(Constants.SERIES_ID, mSearchResults.get(getAdapterPosition()).getId());
-                        mContext.startActivity(intent);
-                    } else if (mSearchResults.get(getAdapterPosition()).getMediaType().equals("person")) {
-                        Intent intent = new Intent(mContext, CastActivity.class);
-                        intent.putExtra(Constants.PERSON_ID, mSearchResults.get(getAdapterPosition()).getId());
                         mContext.startActivity(intent);
                     }
                 }

@@ -38,7 +38,6 @@ import java.util.List;
 import cf.vandit.movie_app.R;
 import cf.vandit.movie_app.adapters.EpisodesAdapter;
 import cf.vandit.movie_app.adapters.SeriesBriefSmallAdapter;
-import cf.vandit.movie_app.adapters.SeriesCastsAdapter;
 import cf.vandit.movie_app.adapters.TrailerAdapter;
 import cf.vandit.movie_app.database.DatabaseHelper;
 import cf.vandit.movie_app.database.series.FavSeries;
@@ -107,7 +106,7 @@ public class SeriesDetailsActivity extends AppCompatActivity {
     private List<EpisodeBrief> mEpisodes;
 
     private TrailerAdapter mTrailerAdapter;
-    private SeriesCastsAdapter mCastAdapter;
+
     private SeriesBriefSmallAdapter mSimilarMoviesAdapter;
 
     @Override
@@ -145,8 +144,6 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         series_star_cast_heading = findViewById(R.id.series_details_cast_heading);
         series_cast = findViewById(R.id.series_details_cast);
         mCasts = new ArrayList<>();
-        mCastAdapter = new SeriesCastsAdapter(SeriesDetailsActivity.this, mCasts);
-        series_cast.setAdapter(mCastAdapter);
         series_cast.setLayoutManager(new LinearLayoutManager(SeriesDetailsActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
         series_recommended_heading = findViewById(R.id.series_details_recommended_heading);
@@ -474,7 +471,7 @@ public class SeriesDetailsActivity extends AppCompatActivity {
                     series_star_cast_heading.setVisibility(View.VISIBLE);
                 }
 
-                mCastAdapter.notifyDataSetChanged();
+
             }
 
             @Override
